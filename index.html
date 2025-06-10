@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" /> 
+    <title>Login</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="lado-login">
+          <h2>Fazer login</h2>
+          <form class="login-form">
+            <input type="text" name="email" id="email" placeholder="E-mail" />
+            <input type="password" name="senha" id="senha" placeholder="Senha" />
+            <button type="button">Entrar</button>
+          </form>
+        </div>
+
+        <div class="lado-cadastro">
+          <div class="mensagem-cadastro">
+            <h2>Não tem uma conta?</h2>
+            <p>
+              Então crie sua conta no nosso e-commerce e melhore sua vida fitness
+            </p>
+            <button type="button" onclick="mudarLogin()">Cadastrar-se</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      function mudarLogin() {
+        window.location.href = 'cadastro.html';
+      }
+    </script>
+  </body>
+</html>
