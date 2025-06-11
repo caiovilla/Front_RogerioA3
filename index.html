@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style/style.css" /> 
+    <link rel="stylesheet" href="./src/style/style.css" />
     <title>Login</title>
   </head>
   <body>
@@ -13,8 +14,13 @@
           <h2>Fazer login</h2>
           <form class="login-form">
             <input type="text" name="email" id="email" placeholder="E-mail" />
-            <input type="password" name="senha" id="senha" placeholder="Senha" />
-            <button type="button">Entrar</button>
+            <input
+              type="password"
+              name="senha"
+              id="senha"
+              placeholder="Senha"
+            />
+            <button class="btn_login" type="submit">Entrar</button>
           </form>
         </div>
 
@@ -22,17 +28,31 @@
           <div class="mensagem-cadastro">
             <h2>Não tem uma conta?</h2>
             <p>
-              Então crie sua conta no nosso e-commerce e melhore sua vida fitness
+              Então crie sua conta no nosso e-commerce e melhore sua vida
+              fitness
             </p>
             <button type="button" onclick="mudarLogin()">Cadastrar-se</button>
           </div>
         </div>
       </div>
     </main>
-    <script>
+    <script type="module">
+      import { ApiRequest2 } from "./src/models/api2.js";
       function mudarLogin() {
-        window.location.href = 'cadastro.html';
+        window.location.href = "cadastro.html";
       }
+
+      const btn_login = document.querySelector(".btn_login");
+      const email = document.querySelector("#email");
+      const password = document.querySelector("#senha");
+      btn_login.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const data = {
+          email: email.value,
+          senha: password.value,
+        };
+        await ApiRequest2.login(data);
+      });
     </script>
   </body>
 </html>
