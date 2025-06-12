@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style/new_product.css" />
+    <title>Cadastro Produto</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="header-content">
+        <h1 class="logo">NEO<span>FIT</span></h1>
+        <nav>
+          <ul>
+            <li>Home</li>
+            <li>Produtos</li>
+            <li>Sobre</li>
+            <li>Contato</li>
+          </ul>
+        </nav>
+        <div class="nav-icon">
+          <img src="imgs/menu.png" alt="Menu" />
+          <img src="imgs/cart.png" alt="Carrinho" class="menu-button" />
+        </div>
+      </div>
+    </div>
+    <main>
+      <div class="container">
+        <!-- Formulário de cadastro -->
+        <div class="lado-login">
+          <form class="login-form" action="/cadastrar-produto" method="POST">
+            <h2>Cadastrar Produto</h2>
+
+            <input
+              type="text"
+              name="nome"
+              placeholder="Nome do Produto"
+              required
+            />
+            <input
+              type="number"
+              step="0.01"
+              name="preco"
+              placeholder="Preço"
+              required
+            />
+            <input type="text" name="cliente" placeholder="Cliente" required />
+
+            <button type="submit">Cadastrar</button>
+          </form>
+        </div>
+
+        <!-- Painel visual do lado direito -->
+        <div class="lado-cadastro">
+          <h1>Cadastro de Produtos</h1>
+          <p>Adicione os dados do novo produto.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
