@@ -15,11 +15,10 @@
   <body>
     <header class="navbar">
       <div class="header-content">
-        <h1 class="logo">NEO<span>FIT</span></h1>
+        <h1 class="logo">BAILLY<span>FIT</span></h1>
         <nav>
           <ul>
-            <li>Home</li>
-            <li>Criar Produto</li>
+            <li class="criar__produto">Criar Produto</li>
           </ul>
         </nav>
       </div>
@@ -27,65 +26,16 @@
 
   
     <div class="container_flex">
-      <!-- <div class="prod">
-        <div class="card">
-          <h3>wheyisolado</h3>
-          <button class="deletar">X</button>
-        </div>
-        <p>Preço:</p>
-        <div class="btn-group">
-          <button class="comprar">Comprar</button>
-          <button class="editar">Editar</button>
-        </div>
-      </div>
 
-      <div class="prod">
-        <h3>wheyisolado</h3>
-        <p>Preço:</p>
-        <div class="btn-group">
-          <button class="comprar">Comprar</button>
-          <button class="editar">Editar</button>
-        </div>
-      </div>
-
-      <div class="prod">
-        <h3>wheyisolado</h3>
-        <p>Preço:</p>
-        <div class="btn-group">
-          <button class="comprar">Comprar</button>
-          <button class="editar">Editar</button>
-        </div>
-      </div>
-
-      <div class="prod">
-        <h3>wheyisolado</h3>
-        <p>Preço:</p>
-        <div class="btn-group">
-          <button class="comprar">Comprar</button>
-          <button class="editar">Editar</button>
-        </div>
-      </div>
-
-      <div class="prod">
-        <h3>wheyisolado</h3>
-        <p>Preço:</p>
-        <div class="btn-group">
-          <button class="comprar">Comprar</button>
-          <button class="editar">Editar</button>
-        </div>
-      </div>
-
-      <div class="prod">
-        <h3>wheyisolado</h3>
-        <p>Preço:</p>
-        <div class="btn-group">
-          <button class="comprar">Comprar</button>
-          <button class="editar">Editar</button>
-        </div>
-      </div> -->
     </div>
     <script type="module">
       import {ApiRequest} from "./src/models/api.js"
+
+      function goToCreate(){
+        window.location.href = "cadastro_produto.html"
+      }
+
+
 
       const idUser = localStorage.getItem("@id")
  
@@ -93,6 +43,10 @@
 
 
       const containerFlex = document.querySelector(".container_flex")
+      const criarProdutoLi = document.querySelector(".criar__produto")
+      criarProdutoLi.addEventListener("click", ()=>{
+        window.location.replace("cadastro_produto.html")
+      })
 
       function createList(arrProducts,sectionAppend){
         for(let i = 0; i<arrProducts.length; i++){
@@ -118,9 +72,9 @@
       }
 
       createList(products,containerFlex)
-      const teste = document.querySelectorAll(".deletar")
-      console.log(teste)
-      teste.forEach(el =>{
+      const del = document.querySelectorAll(".deletar")
+
+      del.forEach(el =>{
 
         el.addEventListener("click",async(e)=>{
           await ApiRequest.deleteProduct(e.target.id)

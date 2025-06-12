@@ -37,7 +37,7 @@
       </div>
     </main>
     <script type="module">
-      import { ApiRequest2 } from "./src/models/api2.js";
+      import { ApiRequest } from "./src/models/api.js";
       function mudarLogin() {
         window.location.href = "cadastro.html";
       }
@@ -51,7 +51,7 @@
           email: email.value,
           senha: password.value,
         };
-        await ApiRequest2.login(data);
+        await ApiRequest.login(data);
       });
     </script>
   </body>

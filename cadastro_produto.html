@@ -9,44 +9,37 @@
   <body>
     <div class="navbar">
       <div class="header-content">
-        <h1 class="logo">NEO<span>FIT</span></h1>
+        <h1 class="logo">BAILLY<span>FIT</span></h1>
         <nav>
           <ul>
-            <li>Home</li>
-            <li>Produtos</li>
-            <li>Sobre</li>
-            <li>Contato</li>
+            <li class="go__home">Home</li>
           </ul>
         </nav>
-        <div class="nav-icon">
-          <img src="imgs/menu.png" alt="Menu" />
-          <img src="imgs/cart.png" alt="Carrinho" class="menu-button" />
-        </div>
       </div>
     </div>
     <main>
       <div class="container">
-        <!-- Formulário de cadastro -->
         <div class="lado-login">
-          <form class="login-form" action="/cadastrar-produto" method="POST">
+          <form class="login-form">
             <h2>Cadastrar Produto</h2>
 
             <input
               type="text"
               name="nome"
+              class="nome"
               placeholder="Nome do Produto"
               required
             />
             <input
               type="number"
               step="0.01"
+              class="preco"
               name="preco"
               placeholder="Preço"
               required
             />
-            <input type="text" name="cliente" placeholder="Cliente" required />
 
-            <button type="submit">Cadastrar</button>
+            <button class="cadastro__produto" type="submit">Cadastrar</button>
           </form>
         </div>
 
@@ -57,5 +50,29 @@
         </div>
       </div>
     </main>
+
+    <script type="module">
+      import { ApiRequest } from "./src/models/api.js"
+
+      const homeLi = document.querySelector(".go__home")
+      const nome_register = document.querySelector(".nome")
+      const preco_register = document.querySelector(".preco")
+      const btnCadastro = document.querySelector(".cadastro__produto")
+      btnCadastro.addEventListener("click", (e)=>{
+        e.preventDefault()
+
+        const cliente_id = localStorage.getItem("@id")
+        const data = {
+          nome:nome_register.value,
+          preco:preco_register.value,
+          clienteId:cliente_id
+        }
+        ApiRequest.createProducts(data)
+      })
+      homeLi.addEventListener("click", (e)=>{
+        e.preventDefault()
+        window.location.replace("telaprincipal.html")
+      })
+    </script>
   </body>
 </html>
