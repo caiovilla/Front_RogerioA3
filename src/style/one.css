@@ -86,7 +86,7 @@ nav ul li:hover {
 }
 
 .comprar,
-.editar {
+.deletar {
     border: none;
     border-radius: 8px;
     padding: 8px 12px;
@@ -101,28 +101,16 @@ nav ul li:hover {
     color: #fff;
 }
 
-.editar {
+.deletar {
     background-color: #ff5e5e;
     color: #fff;
 }
 
 .comprar:hover,
-.editar:hover {
+.deletar:hover {
     transform: scale(1.05);
     opacity: 0.9;
 }
 
-.card{
-    display: flex; 
-    align-items: center; 
-    justify-content: space-around;
-}
 
-.deletar{
-    background-color: transparent;
-    border:none;
-    width: 20px;
-    height: 20px;
-    border-radius: 100px;
-    cursor: pointer;
-}
+

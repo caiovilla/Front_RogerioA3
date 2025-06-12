@@ -20,4 +20,37 @@ export class ApiRequest{
         }, 1000)
         return newUser
     } 
+
+    static async getProductClient(id){
+        const search = await fetch(`${this.url}/produtos/cliente/${id}`,{
+            method:"GET"
+        })
+
+        .then(res => res.json())
+        .then(res =>{
+            console.log(res)
+            return res
+        })
+        .catch (err => console.log(err))
+    
+        return search
+        
+    }
+
+    static async deleteProduct(id){
+        const del = await fetch(`${this.url}/produtos/${id}`,{
+            method:"DELETE"
+        })
+
+        .then(res=> res.json())
+        .then(res=>{
+            console.log(res)
+            return res
+        })
+        .catch (err=> console.log(err))
+        
+        window.location.reload()
+        return del
+    }
+
 }

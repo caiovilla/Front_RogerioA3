@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="./src/style/one.css" />
   </head>
   <body>
-    <!-- NAVBAR -->
     <header class="navbar">
       <div class="header-content">
         <h1 class="logo">NEO<span>FIT</span></h1>
@@ -26,10 +25,10 @@
       </div>
     </header>
 
-    <
+  
     <div class="container_flex">
-      <div class="prod">
-        <div style="display: flex; align-items: center; justify-content: space-around;">
+      <!-- <div class="prod">
+        <div class="card">
           <h3>wheyisolado</h3>
           <button class="deletar">X</button>
         </div>
@@ -83,7 +82,50 @@
           <button class="comprar">Comprar</button>
           <button class="editar">Editar</button>
         </div>
-      </div>
+      </div> -->
     </div>
+    <script type="module">
+      import {ApiRequest} from "./src/models/api.js"
+
+      const idUser = localStorage.getItem("@id")
+ 
+      const products = await ApiRequest.getProductClient(idUser)
+
+
+      const containerFlex = document.querySelector(".container_flex")
+
+      function createList(arrProducts,sectionAppend){
+        for(let i = 0; i<arrProducts.length; i++){
+          let product = arrProducts[i]
+          let create = cardCreate(product)
+          sectionAppend.appendChild(create)
+       
+        }
+      }
+      function cardCreate(product){
+        let tagDiv = document.createElement("div")
+        tagDiv.classList.add("prod")
+        tagDiv.innerHTML = 
+        ` 
+        <h3> ${product.nome}</h3> 
+        <p>Preço: $${product.preco}</p>
+        <div class="btn-group">
+          <button class="comprar" id=${product.id}>Comprar</button>
+          <button class="deletar" id=${product.id}>Deletar</button>
+        </div>
+        `
+        return tagDiv
+      }
+
+      createList(products,containerFlex)
+      const teste = document.querySelectorAll(".deletar")
+      console.log(teste)
+      teste.forEach(el =>{
+
+        el.addEventListener("click",async(e)=>{
+          await ApiRequest.deleteProduct(e.target.id)
+        })
+      })
+    </script>
   </body>
 </html>
