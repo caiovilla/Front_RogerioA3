@@ -3,53 +3,129 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEOFIT</title>
     <link rel="stylesheet" href="./src/style/one.css" />
   </head>
   <body>
-    <!-- NAVBAR -->
-    <div class="navbar">
+    <link rel="stylesheet" href="./src/style/one.css" />
+  </head>
+  <body>
+    <header class="navbar">
       <div class="header-content">
         <h1 class="logo">NEO<span>FIT</span></h1>
         <nav>
           <ul>
             <li>Home</li>
-            <li>Produtos</li>
-            <li>Sobre</li>
-            <li>Contato</li>
+            <li>Criar Produto</li>
           </ul>
         </nav>
-        <div class="nav-icon">
-          <img src="imgs/menu.png" alt="Menu" />
-          <img src="imgs/cart.png" alt="Carrinho" class="menu-button" />
-        </div>
-      </div>
-    </div>
-
-    <header>
-      <div class="header-content">
-        <div class="header-bottom-side">
-          <div class="header-bottom-side-left">
-            <h2>Dê um novo cuidado ao seu corpo</h2>
-            <p>
-              Sucesso sempre tem a ver com trabalho duro, consistência e foco.
-              Faça isso e a grandeza virá.
-            </p>
-            <button>Ver agora &#8594;</button>
-          </div>
-
-          <div class="header-bottom-side-right">
-            <img src="/imgs/banner2.png" alt="Imagem principal" />
-          </div>
-        </div>
       </div>
     </header>
-    <script>
-      const navbar = document.querySelector(".navbar");
-      const menuButton = document.querySelector(".menu-button");
-      navbar.addEventListener("click", () => {
-        navbar.classList.toggle("show-menu");
-      });
+
+  
+    <div class="container_flex">
+      <!-- <div class="prod">
+        <div class="card">
+          <h3>wheyisolado</h3>
+          <button class="deletar">X</button>
+        </div>
+        <p>Preço:</p>
+        <div class="btn-group">
+          <button class="comprar">Comprar</button>
+          <button class="editar">Editar</button>
+        </div>
+      </div>
+
+      <div class="prod">
+        <h3>wheyisolado</h3>
+        <p>Preço:</p>
+        <div class="btn-group">
+          <button class="comprar">Comprar</button>
+          <button class="editar">Editar</button>
+        </div>
+      </div>
+
+      <div class="prod">
+        <h3>wheyisolado</h3>
+        <p>Preço:</p>
+        <div class="btn-group">
+          <button class="comprar">Comprar</button>
+          <button class="editar">Editar</button>
+        </div>
+      </div>
+
+      <div class="prod">
+        <h3>wheyisolado</h3>
+        <p>Preço:</p>
+        <div class="btn-group">
+          <button class="comprar">Comprar</button>
+          <button class="editar">Editar</button>
+        </div>
+      </div>
+
+      <div class="prod">
+        <h3>wheyisolado</h3>
+        <p>Preço:</p>
+        <div class="btn-group">
+          <button class="comprar">Comprar</button>
+          <button class="editar">Editar</button>
+        </div>
+      </div>
+
+      <div class="prod">
+        <h3>wheyisolado</h3>
+        <p>Preço:</p>
+        <div class="btn-group">
+          <button class="comprar">Comprar</button>
+          <button class="editar">Editar</button>
+        </div>
+      </div> -->
+    </div>
+    <script type="module">
+      import {ApiRequest} from "./src/models/api.js"
+
+      const idUser = localStorage.getItem("@id")
+ 
+      const products = await ApiRequest.getProductClient(idUser)
+
+
+      const containerFlex = document.querySelector(".container_flex")
+
+      function createList(arrProducts,sectionAppend){
+        for(let i = 0; i<arrProducts.length; i++){
+          let product = arrProducts[i]
+          let create = cardCreate(product)
+          sectionAppend.appendChild(create)
+       
+        }
+      }
+      function cardCreate(product){
+        let tagDiv = document.createElement("div")
+        tagDiv.classList.add("prod")
+        tagDiv.innerHTML = 
+        ` 
+        <h3> ${product.nome}</h3> 
+        <p>Preço: $${product.preco}</p>
+        <div class="btn-group">
+          <button class="comprar" id=${product.id}>Comprar</button>
+          <button class="deletar" id=${product.id}>Deletar</button>
+        </div>
+        `
+        return tagDiv
+      }
+
+      createList(products,containerFlex)
+      const teste = document.querySelectorAll(".deletar")
+      console.log(teste)
+      teste.forEach(el =>{
+
+        el.addEventListener("click",async(e)=>{
+          await ApiRequest.deleteProduct(e.target.id)
+        })
+      })
     </script>
   </body>
 </html>

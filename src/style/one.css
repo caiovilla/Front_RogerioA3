@@ -45,20 +45,6 @@ nav ul {
     align-items: center;
 }
 
-.nav-icon {
-    display: flex;
-    align-items: center;
-}
-
-.nav-icon img {
-    width: 30px;
-    cursor: pointer;
-}
-
-.nav-icon img:first-child {
-    margin-right: 1rem;
-}
-
 nav ul li {
     color: #fff;
     margin-right: 1.5rem;
@@ -71,79 +57,60 @@ nav ul li:hover {
     font-weight: bold;
 }
 
-.menu-button {
-    display: inline;
+
+.container_flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 50px;
+    background-color: #ffffff;
 }
 
-.header-bottom-side{
-    background-image: #fff;
-}
-.header-bottom-side {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-}
-
-.header-bottom-side-left {
-    flex-basis: 50%;
-    height: 100%;
-}
-
-.header-bottom-side-left h2 {
-    font-size: 3.2rem;
-    margin-bottom: 1.5rem;
-}
-
-.header-bottom-side-left p {
-    line-height: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.header-bottom-side-left button {
+.prod {
     background-color: #4f9cff;
-    border: none;
-    cursor: pointer;
-    padding: 0.8rem 3.8rem;
-    border-radius: 9999px;
-    color: #fff;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: all 0.2s;
-}
-
-.header-bottom-side-left button:hover {
-    background-color: #004c94;
-}
-
-
-.header-bottom-side-right {
-    flex-basis: 50%;
+    height: 150px;
+    width: 220px;
+    padding: 15px;
+    border-radius: 15px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.header-bottom-side-right img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+.btn-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+.comprar,
+.deletar {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    width: 90px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.comprar {
+    background-color: #003366;
+    color: #fff;
+}
+
+.deletar {
+    background-color: #ff5e5e;
+    color: #fff;
+}
+
+.comprar:hover,
+.deletar:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
 
-@media (max-width: 768px) {
-    .header-bottom-side {
-        flex-direction: column;
-        text-align: center;
-    }
 
-    .header-bottom-side-left,
-    .header-bottom-side-right {
-        flex-basis: 100%;
-    }
-
-    .header-bottom-side-left h2 {
-        font-size: 2rem;
-    }
-}
