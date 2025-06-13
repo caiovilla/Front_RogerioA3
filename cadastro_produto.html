@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAILLYFIT</title>
     <link rel="stylesheet" href="./src/style/new_product.css" />
     <title>Cadastro Produto</title>
   </head>
@@ -43,7 +44,6 @@
           </form>
         </div>
 
-        <!-- Painel visual do lado direito -->
         <div class="lado-cadastro">
           <h1>Cadastro de Produtos</h1>
           <p>Adicione os dados do novo produto.</p>
@@ -53,6 +53,10 @@
 
     <script type="module">
       import { ApiRequest } from "./src/models/api.js"
+
+      if(!localStorage.getItem("@token")){
+        window.location.replace("./index.html")
+      }
 
       const homeLi = document.querySelector(".go__home")
       const nome_register = document.querySelector(".nome")

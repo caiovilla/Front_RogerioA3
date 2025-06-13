@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAILLYFIT</title>
     <link rel="stylesheet" href="./src/style/style.css" /> 
     <link rel="stylesheet" href="./src/style/style.css" />
     <title>Login</title>
@@ -31,16 +32,21 @@
               Então crie sua conta no nosso e-commerce e melhore sua vida
               fitness
             </p>
-            <button type="button" onclick="mudarLogin()">Cadastrar-se</button>
+            <button type="button" class="register__btn" onclick="mudarLogin()">Cadastrar-se</button>
           </div>
         </div>
       </div>
     </main>
     <script type="module">
       import { ApiRequest } from "./src/models/api.js";
-      function mudarLogin() {
-        window.location.href = "cadastro.html";
+
+      if(localStorage.getItem("@token")){
+        window.location.replace("./telaprincipal.html")
       }
+      
+      const btn_register = document.querySelector(".register__btn")
+      btn_register.addEventListener("click", ()=> window.location.replace("./cadastro.html"))
+
 
       const btn_login = document.querySelector(".btn_login");
       const email = document.querySelector("#email");

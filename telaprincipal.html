@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NEOFIT</title>
+    <title>BAILLYFIT</title>
     <link rel="stylesheet" href="./src/style/one.css" />
   </head>
   <body>
@@ -19,6 +19,7 @@
         <nav>
           <ul>
             <li class="criar__produto">Criar Produto</li>
+            <li class="logout">Logout</li>
           </ul>
         </nav>
       </div>
@@ -31,22 +32,28 @@
     <script type="module">
       import {ApiRequest} from "./src/models/api.js"
 
-      function goToCreate(){
-        window.location.href = "cadastro_produto.html"
+      if(!localStorage.getItem("@token")){
+        window.location.replace("./index.html")
       }
-
 
 
       const idUser = localStorage.getItem("@id")
  
       const products = await ApiRequest.getProductClient(idUser)
 
-
-      const containerFlex = document.querySelector(".container_flex")
       const criarProdutoLi = document.querySelector(".criar__produto")
       criarProdutoLi.addEventListener("click", ()=>{
         window.location.replace("cadastro_produto.html")
       })
+
+      const logoutLi = document.querySelector(".logout")
+      logoutLi.addEventListener("click", ()=>{
+        localStorage.removeItem("@id")
+        localStorage.removeItem("@token")
+        window.location.replace("./index.html")
+      })
+
+      const containerFlex = document.querySelector(".container_flex")
 
       function createList(arrProducts,sectionAppend){
         for(let i = 0; i<arrProducts.length; i++){
